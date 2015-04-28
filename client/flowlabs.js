@@ -1,11 +1,13 @@
 var flow = angular.module('flowlabs', [
   'ngRoute'
+  // 'flowlabs.home'
 ]);
 
 flow.config(function($routeProvider){
   $routeProvider
-    .when('/', {
-      templateUrl: 'home.html'
+    .when('/home', {
+      templateUrl: 'home/home.html',
+      controller: 'HomeController'
     })
     .when('/bottle', {
       templateUrl: 'bottle/bottle.html'
@@ -17,7 +19,7 @@ flow.config(function($routeProvider){
       templateUrl: 'team/team.html'
     })
     .otherwise({
-      redirectTo: '/'
+      redirectTo: '/home'
     });
 });
 

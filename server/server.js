@@ -1,8 +1,8 @@
 var express = require('express');
 var mongoose = require('mongoose');
-var fs = require('fs');
 
-//Get Server Up
+
+//Get Server Running
 var app = express();
 var server = app.listen(3000, function(){
   var host = server.address().address;
@@ -14,7 +14,8 @@ app.use(express.static('client'));
 
 
 //Database Setup
-var mongoURI = process.env.CUSTOMCONNSTR_MONGOLAB_URI || 'mongodb://localhost/flowlabs';
+var mongoURI = process.env.CUSTOMCONNSTR_MONGOLAB_URI || 'mongodb://localhost:27017/flowlabs';
+
 mongoose.connect(mongoURI);
 
 var db = mongoose.connection;
@@ -22,14 +23,13 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function (callback) {
 });
 
-//Schema Creation
-var contactSchema = mongoose.Schema({
-  email: String
+//Schema + Model Creation
+var contactSchema = new mongoose.Schema({
+  email: {type: String, required: true}
 });
-
-var Contact = mongoose.model('Contact', contactSchema);
-
 
 
 
 module.exports = app;
+module.exports = db;
+module.exports = mongoose.model('Contact', contactSchema);
