@@ -1,13 +1,13 @@
-<div id="home">
+<div id="home"  ng-controller="HomeController" >
    <h1>Take Back Hydration</h1>
 
    <img src='assets/Founders.jpg'>
 
-   <h2>OUR MISSION</h2>
+   <h3>OUR MISSION</h3>
    <p>"60% of our body is water, yet many of us still overlook proper hydration. We build products to help you understand your hydration needs, form better habits and reach your goals - whether it's improved performance or productivity, weight loss, healthier skin, or general health & fitness"</p>
 
-  <form name="contactForm" ng-submit=''>
-    <input type='text'ng-controller="HomeController">
-    <button>Notify Me!</button>
+  <form name="contactForm">
+    <input type='email' ng-model="userEmail">
+    <button ng-click='send(userEmail)'>Notify Me!</button>
   </form>
 </div>

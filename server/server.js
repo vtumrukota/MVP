@@ -14,22 +14,21 @@ app.use(express.static('client'));
 
 
 //Database Setup
-var mongoURI = process.env.CUSTOMCONNSTR_MONGOLAB_URI || 'mongodb://localhost:27017/flowlabs';
+var mongoURI = process.env.CUSTOMCONNSTR_MONGOLAB_URI || 'mongodb://localhost:270/flowlabs';
 
-mongoose.connect(mongoURI);
+//mongoose.connect(mongoURI);
 
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function (callback) {
-});
+// var db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'connection error:'));
+// db.once('open', function (callback) {
+// });
 
 //Schema + Model Creation
 var contactSchema = new mongoose.Schema({
   email: {type: String, required: true}
 });
 
+module.exports = {app:app};
 
-
-module.exports = app;
-module.exports = db;
-module.exports = mongoose.model('Contact', contactSchema);
+require('./config/middleware.js')(app, express);
+// , db:db, Contact:mongoose.model('Contact', contactSchema)

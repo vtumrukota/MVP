@@ -1,9 +1,6 @@
-var flow = angular.module('flowlabs', [
-  'ngRoute'
-  // 'flowlabs.home'
-]);
+angular.module('flowlabs', ['ngRoute','flowlabs.home'])
 
-flow.config(function($routeProvider){
+.config(function($routeProvider){
   $routeProvider
     .when('/home', {
       templateUrl: 'home/home.html',
@@ -23,10 +20,7 @@ flow.config(function($routeProvider){
     });
 });
 
-// flow.controller('NavController', function($scope){
-//   $scope.message = 'We know the routing is working';
-//   console.log('Got it working2')
-// });
+
 
 
 
